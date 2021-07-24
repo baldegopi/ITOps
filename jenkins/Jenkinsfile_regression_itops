@@ -9,9 +9,7 @@ pipeline {
     skipDefaultCheckout(true)
   }
 
-  tools {
-        maven 'jenkins-maven'  
-    }
+ 
 
   stages {
         
