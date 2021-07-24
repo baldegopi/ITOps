@@ -1,0 +1,13 @@
+
+# dependencies
+/node_modules
+
+
+# Auto generate files
+/JSFiles
+/Reports
+/Images
+
+
+
+

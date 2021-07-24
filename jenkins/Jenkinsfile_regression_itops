@@ -1,0 +1,87 @@
+pipeline {
+    environment{
+        IMAGE_NAME = 'smartops/regression'
+    }
+ 
+ agent { label "${NODE_LABEL}" }
+
+  options {
+    skipDefaultCheckout(true)
+  }
+
+  tools {
+        maven 'jenkins-maven'  
+    }
+
+  stages {
+        
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+         }
+
+	    stage('clean workspace') {
+             steps {
+                 cleanWs()            
+                 }
+	     }
+
+        stage('Checkout') {
+             steps {
+                 git branch: "${Branch}", credentialsId: 'smartops_devops', url: 'https://USTInnovationEngineering@dev.azure.com/USTInnovationEngineering/USTP-SMOP-BU-00_SmartOpsQAAutomation/_git/itops-automation'
+                 }
+         }
+
+
+        stage('Test Setup') {
+            steps {
+                echo "[INFO] Executing npm install, webdriver update and tsc"
+                sh """
+               pwd
+               ls
+                npm install                
+                npm install -g typescript
+                npm install -g protractor
+                npm install -g webdriver-manager
+                npm run webdriver-update
+
+                
+
+                node node_modules/protractor/bin/webdriver-manager update
+                /home/smartops-jenkins/.npm-packages/lib/node_modules/typescript/bin/tsc
+                """
+                
+            }   
+        }
+        stage('ITOPS Regression Test') {
+            steps {
+                echo "[INFO] Executing Regression Test"
+                sh """                
+                  node node_modules/protractor/bin//protractor JSFiles/Configuration.js --params.baseUrl ${Environment_Name} --browser=${Browser}  --Options=${BrowserMode} --no-sandbox
+                """
+                
+            }   
+        }
+
+  }
+  post {
+        always {
+            emailext (
+                  subject: "Regression Test results for itops . Job '${env.JOB_NAME} . Build No ${env.BUILD_NUMBER}'",
+                  body: """Please see the attachment for regression test result""",
+                  to: "SreejithSivankutty.Nair@ust-global.com,Binu.Rajagopal@ust-global.com,Pillaikrishnanunni.Unnikrishna@ust-global.com",
+                  from: "noreplysmartopssvc@ust-global.com",
+                  mimeType: 'text/plain',
+                  attachmentsPattern: 'Reports/*.*'
+             ) 
+
+
+        }
+}
+   
+}
+

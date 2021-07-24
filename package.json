@@ -1,0 +1,30 @@
+{
+  "name": "cucumberframework",
+  "version": "1.0.0",
+  "description": "Initial Framework setup for cucumber",
+  "main": "index.js",
+  "scripts": {
+    "itopsautomation": "protractor JSFiles/Configuration.js",
+    "preitopsautomation": "tsc",
+    "protractor": "./node_modules/protractor/built/cli.js",
+    "webdriver-update": "./node_modules/.bin/webdriver-manager update"
+  },
+  "author": "Gopi Balde",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cucumber": "4.0.4",
+    "@types/node": "12.12.2",
+    "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
+    "cucumber": "6.0.5",
+    "cucumber-html-reporter": "^5.2.0",
+    "multiple-cucumber-html-reporter": "^1.18.0",
+    "node-fetch": "^2.6.1",
+    "properties-reader": "^2.2.0",
+    "protractor": "^7.0.0",
+    "protractor-cucumber-framework": "6.2.1",
+    "protractor-multiple-cucumber-html-reporter-plugin": "1.8.1",
+    "ts-node": "8.10.2",
+    "typescript": "3.4.3"
+  }
+}

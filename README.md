@@ -1,20 +1,28 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Project Introduction: Regression Test Automation for UST - SmartOps platform 
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# Project Overview:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+	 Automation of 250 Regression Test cases in ITOps platform covering GUI & API functionality testing using robust framework
+
+# Project Description:
+
+	Automation of Regression test cases using Proctractor framework, cucumber BDD tool and reports in Jasmine framework.
+	Jenkins to trigger Test scripts execution as a part of DevOps CI-CD pipeline
+
+# Project Setup:
+  
+	Recommended Editor: Visual Studio Code
+	Project installation Steps.
+	install node js exe file from https://nodejs.org/en/download/
+	"npm install" run this command from project folder path  
+	"npm run webdriver-update"
+
+# Running the Test:
+
+	npm run itopsautomation {environment}
+
+# Troubleshooting:
+
+	Steps to troubleshoot.
