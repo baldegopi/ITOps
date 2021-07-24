@@ -32,7 +32,7 @@ pipeline {
 
         stage('Checkout') {
              steps {
-                 git branch: "${Branch}", credentialsId: 'smartops_devops', url: 'https://USTInnovationEngineering@dev.azure.com/USTInnovationEngineering/USTP-SMOP-BU-00_SmartOpsQAAutomation/_git/itops-automation'
+                 git branch: "${Branch}", url: 'https://github.com/baldegopi/ITOps'
                  }
          }
 
@@ -68,20 +68,7 @@ pipeline {
         }
 
   }
-  post {
-        always {
-            emailext (
-                  subject: "Regression Test results for itops . Job '${env.JOB_NAME} . Build No ${env.BUILD_NUMBER}'",
-                  body: """Please see the attachment for regression test result""",
-                  to: "SreejithSivankutty.Nair@ust-global.com,Binu.Rajagopal@ust-global.com,Pillaikrishnanunni.Unnikrishna@ust-global.com",
-                  from: "noreplysmartopssvc@ust-global.com",
-                  mimeType: 'text/plain',
-                  attachmentsPattern: 'Reports/*.*'
-             ) 
 
-
-        }
-}
    
 }
 
